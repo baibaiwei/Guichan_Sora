@@ -19,13 +19,21 @@ Guichan for Hoshizora is a guichan(guichan.sourceforge.net)modification used by 
 Added following mechanisms
 
 * Modifier Support
+
 * Animation Support(Based on Modifier)
+
 * Message Mechanism(Widget::sendMesssage/onMessage, Gui::sendMessage)
+
 * Style Mechanism(Global/Local Style, key mapped string and color)
+
 * Factory Pattern(WidgetFactory, AnimationFactory, ModifierFactory etc)
+
 * Sound and SoundLoader(For easier sound support)
+
 * BirthListener
+
 * Global/Local Transparency interface support(depend on implemention of graphics)
+
 * ListModel enhancements
 
 This modification may not compatible with original guichan bindings(SDL, hge etc)
