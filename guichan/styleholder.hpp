@@ -3,7 +3,7 @@
 //  Guichan_Sora
 //
 //  Created by Robert Bu(darkfall) on 8/26/11.
-//  Copyright 2011 Griffin Bu(Project Hoshizor). All rights reserved.
+//  Copyright 2011 Robert Bu(Project Hoshizora). All rights reserved.
 //
 
 #ifndef gcn_styleholder_h

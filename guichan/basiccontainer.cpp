@@ -417,8 +417,8 @@ namespace gcn
     }
     
     void BasicContainer::sendMessage(const Message& mssg) {
-        if(mssg->getReceiver() != this) {
-            if(mssg->getReceiver() == NULL)
+        if(mssg.getReceiver() != this) {
+            if(mssg.getReceiver() == NULL)
                 Widget::onMessage(mssg);
             
             WidgetListIterator iter;
