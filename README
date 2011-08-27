@@ -1,15 +1,22 @@
+ /* 
+  * Guichan Copyright (c) 2004 - 2008 Olof NaessÈn and Per Larsson
+  *
+  *
+  * Per Larsson a.k.a finalman
+  * Olof NaessÈn a.k.a jansem/yakslem
+  */
 
  /*
   * Extension Part of Guichan Made by Robert Bu (darkfall)
-  * Copyright 2011 Robert Bu(Project Hoshizora). All rights reserved.
+  * Copyright (c) 2009 - 2011 Robert Bu(Studio GameMaster and Project Hoshizora). All rights reserved.
   *
   * Visit: 
   * www.gamemastercn.com 
   * darkfall@gamemastercn.com 
   */
-
-Guichan for Hoshizora is a modification used by Hoshizora - My cross-platform 2d game engine
-Adding/Modifying following mechanisms and functions
+ 
+Guichan for Hoshizora is a guichan(guichan.sourceforge.net)modification used by Hoshizora - My cross-platform 2d game engine
+Added following mechanisms
 
 * Modifier Support
 * Animation Support(Based on Modifier)
