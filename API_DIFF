@@ -1,0 +1,137 @@
+BirthListener.h
+add BirthListener
+add BirthListener::birth
+
+BasicContainer.hpp
+move findWidgetById from protected to public
+add BasicContainer::sendMessage
+add BasicContainer::onMessage
+add BasicContainer::setAlpha
+
+Graphics.hpp
+add Grapchis::setGlobalTransparency
+add Graphics::getGlobalTransparency
+
+Gui.hpp
+add Gui::setGlobalStyle
+add Gui::getGlobalStyle
+add Gui::findWidgetbyId
+add Gui::sendMessage
+add Gui::setSoundLoader
+add Gui::setAlpha
+add Gui::getAlpha
+
+Image.hpp
+add Image::setTextureRect
+
+ListModel.hpp
+add default implemention
+add ListModel::pushElement
+add ListModel::setElementAt
+add ListModel::removeElementAt
+
+Modifier.hpp
+add Modifer
+add Modifier::update
+add Modifier::release
+add Modifier::setFinish
+add Modifier::isFinish
+add Modifier::setOwner
+add Modifier::getOwner
+add Modifier::setAutoRelease
+add Modifier::isAutoRelease
+add Modifier::getName
+add Modifier::onAdd
+add Modifier::onRemove
+add Modifier::onRelease
+
+Animation.hpp
+add Animation
+add Animation::reset
+add Animation::getTotalTime
+add Animation::getCurrTime
+add Aniamtion::getCurrTimeRatio
+
+Style.hpp
+add StyleStringContainer
+add StyleStringContainer::getStyleString
+add StyleStringContainer::setStyleString
+
+add Style
+add Style::DefaultStyle
+add Style::setBackgroundColor
+add Style::setForegroundColor
+add Style::setSelectionColor
+add Style::setBaseColor
+add Style::getBackgroundColor
+add Style::getForegroundColor
+add Style::getSelectionColor
+add Style::getBaseColor
+add Style::getStyleString
+add Style::setStyleString
+add Style::getStyleColor
+add Style::setStyleColor
+
+Sound.hpp
+add Sound
+add Sound::setSoundLoader
+add Sound::getSoundLoader
+add Sound::load
+add Sound::play
+add Sound::stop
+
+SoundLoader.hpp
+add SoundLoader
+add SoundLoader::load
+add SoundLoader::play
+
+Widget.hpp
+add Message
+add Message::getSender
+add Message::getReceiver
+add Message::getMessage
+
+add Widget::_getModifiers
+add Widget::addModifier
+add Widget::removeModifier
+add Widget::findModifierByName
+add Widget::updateModifierList
+add Widget::setAlpha
+add Widget::getAlpha
+add Widget::setStyle
+add Widget::getStyle
+add Widget::setGlobalStyle
+add Widget::getGlobalStyle
+add Widget::sendMessage
+add Widget::onMessage
+add Widget::createWidget
+add Widget::addBirhtListener
+add Widget::removeBirthListener
+
+Widget default Background/Foreground/Selection/Base Color redirected to default Style
+
+Factory.hpp
+add template<typename T> AbstractFactory
+add AbstractFactory::Instance
+add AbstractFactory::create
+add AbstractFactory::reg
+
+WidgetFactory.hpp
+add WidgetFactory
+add RegisterWidget
+add CreateWidget
+add RegisterCoreWidgets
+
+ModifierFactory.hpp
+add ModifierFactory
+
+AnimationFactory.hpp
+add AnimationFactory
+
+StyleHolder.hpp
+add StyleHolder
+add StyleHolder::Instance
+add StyleHolder::addStyle
+add StyleHolder::getStyle
+add StyleHolder::removeStyle
+

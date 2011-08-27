@@ -1,0 +1,86 @@
+
+ /*
+  * Extension Part of Guichan Made by Robert Bu (darkfall)
+  * Copyright 2011 Robert Bu(Project Hoshizora). All rights reserved.
+  *
+  * Visit: 
+  * www.gamemastercn.com 
+  * darkfall@gamemastercn.com 
+  */
+
+Guichan for Hoshizora是Hoshizora引擎所使用的Guichan的一个增强修改版
+添加了如下机制/内容
+	Modifer和Modifier机制
+	* 外部用来修改Widget的类, 必须采用new创建
+	* Widget可以add和remove modifier, 内部维护一个ModiferList
+	* 每帧以自身作为参数update这个Modifier List, 然后Modifier修改Widget状态(例如设置颜色，移动Widget等等)
+	* Modifier在结束其任务(setFinish)之后会被调用release函数释放自身(如果AutoRelease), 当然你也可以重载release函数
+	* 有事件相应函数, onAdd, onRemove, onRelease等
+	* 对于每个子类必须有独一无二的Name
+	
+	Animation和Animation机制
+	* Modifer的一个特化子类, 用于表示Gui动画
+	* 添加了时间(帧计量)计算
+	* 子类需要在update中手动调用Animation::update来计算时间
+	* 子类用过getCurrTimeRatio获取Aniamtion进行比例
+	* 用法同Modifier一致
+	
+	Message和Message机制
+	* Message是一个包含一条字符串信息, sender, receiver的结构(基类)
+	* Widget本身可以sendMessage和onMessage(接受消息)
+	* 用于不同组件之间的交流
+	* 对于普通Widget, sendMessage如果没有receiver或者receiver是自身则调用自身的onMessage函数
+	* 对于Container, 则会在自身处理过后转发到Child Widgets
+	* Gui可以由top widget发送给全局
+	* Animation在onAdd和onRemove/onRelease时发送Animation::MessageStart和Animation::MessageEnd消息, 默认下Widget会在此时enable/disable自身(Widget::onMessage)
+	
+	Style和Style机制
+	* Style是一个储存Widget样式配置信息的类
+	* 支持以key映射的Color和String
+ 	* Style::DefaultStyle为全局Style接口
+ 	* Widget的默认Color(foreground等)改为从Style获取
+	* Gui可以setGlobalStyle，getGlobalStyle
+	* Widget也可以单独的setStyle和getStyle
+	* 实现Widget的时候可以考虑图片，音效路径等从Style获取, 例如对于图片button, this->mHoverImage = getStyle()->getStyleString("btn_hover")
+	* 用户手动给Style添加属性(可以考虑从某种配置文件读取, xml, json, ini etc)
+		* StyleHolder
+			* 全局的Style管理器, 方便管理Style
+			* 以key映射Style, 例如StyleHolder::Instance().getStyle("dark")
+			* 支持getStyle, addStyle, removeStyle等
+			* 全局Style的key为default
+			
+	Factory
+		* 工厂公共基类Factory(factory.hpp), 用过Instance获取全局实例
+			* 支持默认构造函数operator new()
+			* 支持自定义创建函数Base* (*CreatorFn)()
+		* WidgetFactory
+			* 默认由Gui初始化时注册guichan核心所有组件，小写字母的控件名字为name, button, label, window等等
+			* 全局的CreateWidget, RegisterWidget, 或者Widget::createWidget
+		* AnimationFactory
+			* 供用户使用
+		* ModifierFactory
+			* 供用户使用	
+
+	Sound和SoundLoader
+	* 抽象表示声音和声音管理器，并非必须组件
+	* 方便实现Widget声音
+	* 实现可以直接播放，也可以创建保存到指针
+	* 实现应该注意内存管理和效率(直接play的情况下)
+	
+	BirthListener
+	* 和DeathListener相对
+	* 在BasicContainer添加一个Widget时触发
+	
+	核心增强和更改
+	* Gui添加findWidgetById, 只有在top是BasicContainer或者其子类才有效
+	* Gui添加setGlobalStyle, getGlobalStyle, sendMessage, setSoundLoader
+	* Image基类添加setTextureRect
+	* ListModel全面增强
+		现在基类本身就是一个实现而不是接口，方便实现
+		添加pushElement, removeElementAt, setElementAt，方便动态的更改列表内容
+	* ImageButton和Icon在渲染图片之前会设置颜色为ForegroundColor
+	* Graphics基类添加setGlobalTransprency(ratio)和getGlobalTransparency接口
+	* Gui添加setAlpha和getAlpha, 转为比例后转到Grapchis
+	* Widget添加setAlpha和getAlpha, 影响默认的4个Color以及会储存供getAlpha使用
+	
+修改过后的Guichan和老的API绑定(HGE)等可能不兼容，需要对Grapchis的实现做些改动(有添加API)
